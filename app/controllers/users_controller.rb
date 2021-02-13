@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  def new
-    render "users/new"
+  def signup
+    render "signup"
   end
 
   def create
