@@ -1,7 +1,11 @@
 class ItemsController < ApplicationController
   def index
     @menu = Menu.of_menu(params["menu_id"])
-    render "menu_items"
+    if @menu.length > 0
+      render "menu_items"
+    else
+      redirect_to menus_path
+    end
   end
 
   def destroy

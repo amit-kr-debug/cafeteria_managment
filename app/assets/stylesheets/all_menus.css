@@ -17,3 +17,7 @@
 .menus-table-checkbox{
   max-width: 30px;
 }
+
+.delete{
+  max-width: 0px;
+}

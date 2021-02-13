@@ -30,4 +30,22 @@ class MenusController < ApplicationController
     Menu.where(menu_id: params[:id]).destroy_all
     redirect_to menus_path
   end
+
+  def update
+    menu_id = params[:id]
+    active = params[:active]
+    #removig current active menu
+    menu = Menu.where(active: true)
+    menu.each { |item|
+      item.active = false
+      item.save
+    }
+    #updating the active menu
+    menu = Menu.where(menu_id: menu_id)
+    menu.each { |item|
+      item.active = active
+      item.save
+    }
+    redirect_to menus_path
+  end
 end

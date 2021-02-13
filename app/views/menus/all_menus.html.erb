@@ -1,13 +1,15 @@
+<h3 class="menu-Title" > Menus <h3>
 <%= render partial: "menu-section", locals:{menus: @menus} %>
 
 
 
 <!-- Add Menus -->
+<h3 class="menu-Title" > Add a new Menu <h3>
 <%= form_with(url: "/menus", method: "post") do %>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label class="new-menu-title">New Menu</label>
-      <input type="text" class="form-control" name="menu_name" placeholder="Name of new menu">
+      <label class="new-menu-title">Name of Menu</label>
+      <input type="text" class="form-control" name="menu_name">
     </div>
     <div class="form-group col-md-6 invisible">
       <label for=""></label>
@@ -17,16 +19,16 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label class="new-menu-title">Item Name</label>
-      <input type="text" class="form-control item-name-title" name="item_name" placeholder="Cold drink">
+      <input type="text" class="form-control item-name-title" name="item_name" >
     </div>
     <div class="form-group col-md-6">
       <label class="new-menu-title">price</label>
-      <input type="text" class="form-control price" name="price" placeholder="₹ 100">
+      <input type="text" class="form-control price" name="price">
     </div>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1" class="new-menu-title">Description</label>
     <textarea class="form-control" name="description" ></textarea>
   </div>
-  <%= submit_tag 'Add a new Menu', class: 'btn btn-primary' %>
+  <%= submit_tag 'Add Menu', class: 'btn btn-primary' %>
 <% end %>
