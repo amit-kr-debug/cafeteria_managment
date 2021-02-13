@@ -3,12 +3,12 @@ Rails.application.routes.draw do
   get "/" => "home#index"
 
   resources :users
-  resources :admin do
-    resources :editusers
-  end
+  resources :editusers
   resources :menus do
     resources :items
   end
+
+  resources :customers
 
   get "/signup" => "users#signup", as: :sign_up
 

@@ -1,0 +1,41 @@
+<h3 class="User-type-Title" > Admins <h3>
+<%= render partial: "userdata-section", locals:{users: @admins} %>
+
+<h3 class="User-type-Title" > Clerks <h3>
+<%= render partial: "userdata-section", locals:{users: @clerks} %>
+
+<h3 class="User-type-Title" > Customers <h3>
+<%= render partial: "userdata-section", locals:{users: @customers} %>
+
+<!--Add users-->
+<h3 class="User-type-Title" > Add Users <h3>
+
+<%= form_with(url: "/editusers", method: "post") do %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label class="add-user-title">User Name</label>
+      <input type="text" class="form-control name" name="name">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label class="add-user-title">Email</label>
+      <input type="email" class="form-control email" name="email">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label class="add-user-title">Password</label>
+      <input type="password" class="form-control password" name="password" placeholder="">
+    </div>
+
+    <div class="form-group">
+    <label class="add-user-title">User type</label>
+    <select class="form-control user_type" name="user_type">
+      <option>admin</option>
+      <option>clerk</option>
+      <option>customer</option>
+    </select>
+    </div>
+  </div>
+
+  <%= submit_tag 'Add User', class: 'btn btn-primary' %>
+<% end %>

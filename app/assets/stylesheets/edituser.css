@@ -1,0 +1,26 @@
+.User-type-Title{
+  font-size: 25px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.add-user-title{
+  margin-bottom: 8px;
+}
+
+.name{
+  max-width: 250px;
+}
+
+.email{
+  max-width: 300px;
+}
+
+.password{
+  max-width: 250px;
+}
+
+.user_type{
+  max-width: 200px;
+}

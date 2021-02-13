@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  def index
+  def dashboard
     render "dashboard"
   end
 end
