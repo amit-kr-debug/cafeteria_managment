@@ -1,0 +1,19 @@
+.menus-table{
+  margin-bottom: 80px;
+}
+
+.new-menu-title{
+  margin-bottom: 8px;
+}
+
+.price{
+  max-width: 150px;
+}
+
+.item-name-title{
+  max-width: 350px;
+}
+
+.menus-table-checkbox{
+  max-width: 30px;
+}

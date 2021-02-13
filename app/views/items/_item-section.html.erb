@@ -1,0 +1,22 @@
+<table class="table table-striped menus-table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% menu.each do |item| %>
+    <tr>
+      <td><%= item.item_name%></td>
+      <td><%= item.description %></td>
+      <td><%= item.price %></td>
+      <td><%= form_with(url: "/menus/#{params[:menu_id]}/items/#{item.id}", method: "delete") do %>
+               <%= image_submit_tag("/delete.png") %>
+            <% end %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

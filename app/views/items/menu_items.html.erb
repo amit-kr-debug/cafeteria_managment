@@ -1,0 +1,22 @@
+<h3 class="menu-Title" ><%= @menu[0].menu_name %><h3>
+
+<%= render partial: "item-section", locals:{menu: @menu} %>
+
+<!-- Add Items -->
+<%= form_with(url: "/menus/#{params[:menu_id]}/items", method: "post") do %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label class="new-menu-title">Item Name</label>
+      <input type="text" class="form-control item-name-title" name="item_name" placeholder="Cold drink">
+    </div>
+    <div class="form-group col-md-6">
+      <label class="new-menu-title">price</label>
+      <input type="text" class="form-control price" name="price" placeholder="₹ 100">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1" class="new-menu-title">Description</label>
+    <textarea class="form-control" name="description" ></textarea>
+  </div>
+  <%= submit_tag 'Add a new Item', class: 'btn btn-primary' %>
+<% end %>
