@@ -10,5 +10,7 @@ class Menu < ApplicationRecord
     return grouped_menus
   end
 
-
+  def self.active
+    all.where(active: true)
+  end
 end

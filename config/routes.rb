@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  resources :customers
+  resources :customers do
+    resources :cart
+  end
 
   get "/signup" => "users#signup", as: :sign_up
 

@@ -13,4 +13,11 @@ class User < ApplicationRecord
     all.where(user_type: "customer")
   end
 
+  def self.details(user_id)
+    User.find(user_id)
+  end
+
+  def self.cart(user_id)
+    User.find(user_id).cart
+  end
 end
