@@ -1,0 +1,12 @@
+<%= render partial: "cartItems-section", locals:{cart: @cart} %>
+
+<%cart_total = 0%>
+<% @cart.each do |item_id, quantity|%>
+    <%item = Menu.find(item_id)%>
+    <% cart_total += item.price*quantity.to_i %>
+<%end%>
+<h3> Total: ₹ <%=cart_total%></h3>
+
+<%= form_with(url: "/customers/#{session[:current_user_id]}/cart", method: "post") do %>
+  <%= submit_tag 'Place Order', class: 'btn btn-primary place-order' %>
+<%end%>

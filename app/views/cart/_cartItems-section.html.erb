@@ -1,0 +1,68 @@
+<table class="table table-striped menus-table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Qunatity</th>
+      <th scope="col">sub-Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%cart_total = 0%>
+  <% cart.each do |item_id, quantity| %>
+    <%item = Menu.find(item_id)%>
+    <tr>
+      <td><%= item.item_name%></td>
+      <td id="<%= item.id.to_s+"price" %>" ><%= item.price %></td>
+      <td>
+      <%= form_with(url: "/customers/#{session[:current_user_id]}/cart/#{item.id}", method: "put") do %>
+               <div class="quantity">
+                  <button class="plus-btn cart-btn" type="button" name="button" onclick="increase(<%= item.id %>); this.form.submit();">
+                    <img src="/plus.svg" alt="">
+                  </button>
+
+                    <input type="text" id="<%= item.id %>" name="quantity" value="<%= quantity %>">
+                  <button class="minus-btn cart-btn" type="button" name="button" onclick="decrease(<%= item.id %>); this.form.submit();">
+                    <img src="/minus.svg" alt="">
+                  </button>
+               </div>
+               <% end %>
+            </td>
+
+       <td id="<%= item.id.to_s+"sub-total" %>" >
+                <%= item.price.to_i*quantity.to_i%>
+        </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+<script type="text/javascript">
+    function increase(item_id) {
+      quantity = document.getElementById(item_id);
+      quantity.value++;
+      price = document.getElementById(String(item_id)+"price").innerHTML;
+      console.log(quantity, price)
+      document.getElementById(String(item_id)+"sub-total").innerHTML = Number(quantity.value)*Number(price);
+    }
+    function decrease(item_id) {
+      quantity = document.getElementById(item_id);
+      quantity.value--;
+      if (quantity.value>0)
+      {
+      }
+
+      else{
+        quantity.value = 0;
+      }
+      price = document.getElementById(String(item_id)+"price").innerHTML;
+      console.log(quantity, price)
+      document.getElementById(String(item_id)+"sub-total").innerHTML = Number(quantity.value)*Number(price);
+    }
+</script>

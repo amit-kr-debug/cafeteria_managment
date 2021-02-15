@@ -1,0 +1,11 @@
+.cart-item{
+  max-width: 250px;
+}
+
+.place-order{
+  float: right;
+}
+
+.flex-conatiner{
+  display: flex;
+}

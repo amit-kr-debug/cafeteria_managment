@@ -16,12 +16,14 @@ class ItemsController < ApplicationController
   def create
     menu_id = params["menu_id"]
     menu = Menu.of_menu(menu_id)[0]
+
     new_item = Menu.new(
       menu_id: params["menu_id"],
       menu_name: menu.menu_name,
       item_name: params[:item_name],
       price: params[:price],
       description: params[:description],
+      active: menu.active,
     )
     if new_item.save
       redirect_to menu_items_path

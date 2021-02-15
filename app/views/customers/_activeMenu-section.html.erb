@@ -1,45 +1,70 @@
-<table class="table table-striped menus-table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th scope="col">Qunatity</th>
-      <th scope="col">Total</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% menu.each do |item| %>
-    <tr>
-      <td><%= item.item_name%></td>
-      <td><%= item.description %></td>
-      <td id="<%= item.id.to_s+"price" %>" ><%= item.price %></td>
-      <td>
-      <%= form_with(url: "/customers/#{item.id}", method: "put") do %>
-               <div class="quantity">
-                  <button class="plus-btn cart-btn" type="button" name="button" onclick="increase(<%= item.id %>); this.form.submit();">
-                    <img src="plus.svg" alt="">
-                  </button>
-                  <%if user.cart["#{item.id}"] != nil%>
-                    <input type="text" id="<%= item.id %>" name="quantity" value="<%= user.cart["#{item.id}"] %>">
+
+
+<% item_count = 0%>
+<% menu.each do |item| %>
+
+<%if item_count%3 == 0%>
+  <div class="card-deck">
+<%end%>
+    <div class="cart-item card">
+        <img src="/food.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><%= item.item_name%></h5>
+
+            <p class="text-muted"><%= item.description %></p>
+            <div class="quantity">
+            <p class="text-muted item-price">Price: ₹</p>
+            <p class="text-muted item-price" id="<%= item.id.to_s+"price" %>"><%= item.price %></p>
+            </div>
+
+
+        </div>
+        <div class="card-footer">
+            <small class="text-muted" >
+              <div class="quantity card-item">
+              <%= form_with(url: "/customers/#{item.id}", method: "put") do %>
+
+                    <button class="plus-btn cart-btn" type="button" name="button" onclick="increase(<%= item.id %>); this.form.submit();">
+                      <img src="/plus.svg" alt="">
+                    </button>
+                    <%if user.cart != nil%>
+                      <%if user.cart["#{item.id}"] != nil%>
+                        <input type="text" id="<%= item.id %>" name="quantity" value="<%= user.cart["#{item.id}"] %>">
+                        <%else%>
+                      <input type="text" id="<%= item.id %>" name="quantity" value="0">
+
+                        <%end%>
+                    <%else%>
+                      <input type="text" id="<%= item.id %>" name="quantity" value="0">
+                    <%end%>
+                    <button class="minus-btn cart-btn" type="button" name="button" onclick="decrease(<%= item.id %>); this.form.submit();">
+                      <img src="/minus.svg" alt="">
+                    </button>
+
+                <% end %>
+
+
+                <p class="sub-total" id="<%= item.id.to_s+"sub-total" %>" >
+                  <%if user.cart != nil%>
+                    <%= item.price.to_i*user.cart["#{item.id}"].to_i%>
                   <%else%>
-                    <input type="text" id="<%= item.id %>" name="quantity" value="0">
+                      0
                   <%end%>
-                  <button class="minus-btn cart-btn" type="button" name="button" onclick="decrease(<%= item.id %>); this.form.submit();">
-                    <img src="minus.svg" alt="">
-                  </button>
-               </div>
-               <% end %>
-            </td>
-            <%if user.cart["#{item.id}"] != nil%>
-              <td id="<%= item.id.to_s+"sub-total" %>" ><%= item.price.to_i*user.cart["#{item.id}"].to_i%></td>
-            <%else%>
-              <td id="<%= item.id.to_s+"sub-total" %>">0</td>
-            <%end%>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+                </p>
+                </div>
+
+            </small>
+        </div>
+    </div>
+    <%item_count += 1%>
+<%if item_count%3 == 0%>
+  </div>
+  <%end%>
+<%end%>
+
+
+
+
 
 <script type="text/javascript">
     function increase(item_id) {
