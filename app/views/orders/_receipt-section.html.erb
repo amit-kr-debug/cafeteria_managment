@@ -1,0 +1,56 @@
+<h3 class="OrderSectionTitle-text"><%=section_title%></h3>
+<% orders.each do |order| %>
+<div class="container">
+    <div class="row">
+        <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+            <div class="row receipt-row">
+                    <p >
+                        <em >Receipt #: <%=order.id%></em>
+                    </p>
+                    <p style="position: absolute; right: 10px;">
+                        <em >Date: <%=order.order_date.to_formatted_s(:long)%></em>
+                    </p>
+
+            </div>
+            <div class="receipt-row">
+                <div class="text-center">
+                <p class="text-muted" style="margin-left: 0;">Name: <%=user.name%></h1>
+                <p class="text-muted">Email: <%=user.email%></h1>
+            </div>
+                </span>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th class="text-center">Price</th>
+                            <th></th>
+                            <th>quantity</th>
+                            <th class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <%order.order.each do |item_id, item|%>
+                        <%item = eval(item)%>
+                        <tr>
+                            <td class="col-md-9"><em><%=item["item_name"]%></em></h4></td>
+                            <td class="col-md-1 text-center">₹<%=item["price"]%></td>
+                            <td class="text-muted col-md-1 text-center">x</p>
+                             <td class="col-md-1" style="text-align: center"> <%=item["quantity"]%> </td>
+                            <td class="col-md-1 text-center">₹<%=item["sub_total"]%></td>
+                        </tr>
+                    <%end%>
+
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td class="text-right"><h4><strong>Total: </strong></h4></td>
+                            <td class="text-center text-danger"><h4><strong>₹<%=order.total%></strong></h4></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<%end%>

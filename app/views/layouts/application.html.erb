@@ -8,9 +8,13 @@
 
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" %>
 
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   </head>
 
   <body>
@@ -19,6 +23,13 @@
       <%= flash[:error] %>
     </p>
   <% end %>
+
+  <%if flash[:success]%>
+    <p class="Flash-success">
+      <%= flash[:success] %>
+    </p>
+  <% end %>
+
       <%= yield %>
   </body>
 </html>

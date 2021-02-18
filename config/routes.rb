@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :customers do
-    resources :cart
+    resources :cart, :orders
   end
 
   get "/signup" => "users#signup", as: :sign_up

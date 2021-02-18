@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:current_user_id] = user.id
       session[:user_type] = user.user_type
+      session[:order_placed] = false
+
       if session[:user_type] == "customer"
         redirect_to customers_path
       elsif session[:user_type] == "admin"

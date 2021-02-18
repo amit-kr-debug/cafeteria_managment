@@ -19,3 +19,21 @@ body {
   margin: 0 auto;
   margin-top: 60px;
 }
+
+.Flash-error{
+  padding: 10px;
+  margin-bottom: 10px;
+  color:#a94442;
+  background-color:#f2dede;
+  border-color:#ebccd1;
+  border-radius: 4px;
+}
+
+.Flash-success{
+  padding: 10px;
+  margin-bottom: 10px;
+  color:#37ac33;
+  background-color:#8ce463;
+  border-color:#8ce463;
+  border-radius: 4px;
+}
