@@ -35,27 +35,34 @@ class CartController < ApplicationController
                                 "sub_total" => item.price * quantity.to_i }
     end
 
-    new_order = Order.new(
-      user_id: user.id,
-      order: order_hStore,
-      order_date: Date.today,
-      delivered: false,
-      total: order_total,
-    )
+    if session[:user_type] == "clerk"
+      walk_in_customer = User.where(name: "Walk-in")[0]
+      new_order = Order.new(
+        user_id: walk_in_customer.id,
+        order: order_hStore,
+        order_date: Date.today,
+        delivered: false,
+        total: order_total,
+      )
+    else
+      new_order = Order.new(
+        user_id: user.id,
+        order: order_hStore,
+        order_date: Date.today,
+        delivered: false,
+        total: order_total,
+      )
+    end
     new_order.save
 
     user.cart = {}
     user.save
 
     session[:order_placed] = true
-    redirect_to customer_orders_path
-  end
-
-  def generate_order_hstore(item_id)
-    item = Menu.find(item_id)
-    { "item_name" => item.name,
-      "quantity" => quantity,
-      "price" => item.price,
-      "sub_total" => item.price * quantity.to_i }
+    if session[:user_type] == "clerk"
+      redirect_to clerks_pending_orders_path
+    else
+      redirect_to customer_orders_path
+    end
   end
 end

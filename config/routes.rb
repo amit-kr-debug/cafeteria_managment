@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   get "/records" => "admin#records_get", as: :get_records
   post "/records" => "admin#records_post", as: :display_records
-
   get "/records/invoice" => "admin#view_particular_order", as: :view_particular_order
+
+  get "/clerks" => "clerks#index", as: :clerks
+  get "/clerks/pending_orders" => "clerks#pending_orders", as: :clerks_pending_orders
 end

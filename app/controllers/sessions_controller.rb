@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
         redirect_to customers_path
       elsif session[:user_type] == "admin"
         redirect_to dashboard_path
+      elsif session[:user_type] == "clerk"
+        redirect_to clerks_path
       end
     else
       flash[:error] = "Your login attempt was invalid. Please retry!"

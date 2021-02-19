@@ -15,9 +15,7 @@
  */
 body {
   font-family: sans-serif;
-  max-width: 860px;
   margin: 0 auto;
-  margin-top: 60px;
 }
 
 .Flash-error{
@@ -36,4 +34,8 @@ body {
   background-color:#8ce463;
   border-color:#8ce463;
   border-radius: 4px;
+}
+
+.div-main{
+  max-width: 860px;
 }
