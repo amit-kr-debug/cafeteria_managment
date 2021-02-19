@@ -1,0 +1,32 @@
+.record-date-input-title{
+  font-size: 20px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.record-date{
+  padding: 6px;
+  font-size: 14px;
+  color:#453C52;
+  margin-right:10px;
+  margin-left: 10px;
+  border: 1px solid #BFB8CC;
+  border-radius: 4px;
+}
+
+.record-date-div{
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.record-date-text{
+  position: relative;
+  margin-top: 10px;
+
+}
+
+.invisible{
+  max-width: 0;
+}

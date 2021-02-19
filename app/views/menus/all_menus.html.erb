@@ -1,8 +1,6 @@
 <h3 class="menu-Title" > Menus <h3>
 <%= render partial: "menu-section", locals:{menus: @menus} %>
 
-
-
 <!-- Add Menus -->
 <h3 class="menu-Title" > Add a new Menu <h3>
 <%= form_with(url: "/menus", method: "post") do %>

@@ -12,4 +12,8 @@ class Order < ApplicationRecord
   def self.delivered
     all.where("delivered = ?", true)
   end
+
+  def self.records(lower_date_limit, upper_date_limit)
+    all.where("order_date >= ? and order_date <= ?", lower_date_limit, upper_date_limit)
+  end
 end

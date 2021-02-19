@@ -1,0 +1,37 @@
+<h3 class="record-date-input-title">Select the date range to get records <h3>
+<div class="record-date-div">
+  <%= form_with(url: "/records", method: "post") do %>
+    <%= date_field_tag 'lower_date_limit', nil, class: 'record-date' %>
+    :
+    <%= date_field_tag 'upper_date_limit', nil, class: 'record-date' %>
+    <%= submit_tag 'Fetch', class: 'btn btn-primary' %>
+  <%end%>
+</div>
+
+<%if @records != nil%>
+<table class="table table-striped menus-table">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Invoice</th>
+      <th scope="col">Name of customer</th>
+      <th scope="col">Total</th>
+      <th scope="col">View</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @records.each do |order| %>
+    <tr>
+      <td><%= order.order_date %></td>
+      <td><%= order.id %></td>
+      <td><%=User.find(order.user_id).name%></td>
+      <td>₹<%= order.total %></td>
+      <td><%= form_with(url: "/records/invoice", method: "get") do %>
+        <input class="invisible" name="order_id" value=<%=order.id%>>
+        <%= image_submit_tag("/eye.png") %>
+      <% end %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%end%>
