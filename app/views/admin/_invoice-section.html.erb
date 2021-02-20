@@ -1,4 +1,6 @@
 <h3 class="OrderSectionTitle-text"><%=section_title%></h3>
+
+
 <% orders.each do |order| %>
   <% user = User.find(order.user_id) %>
   <div class="container">
