@@ -1,4 +1,4 @@
-class MenusController < ApplicationController
+class MenusController < AdminController
   def index
     @menus = Menu.categorized_menu
     render "all_menus"

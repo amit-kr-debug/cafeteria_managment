@@ -54,7 +54,7 @@
 
 
                 <%if section_title=="Pending Orders" %>
-                    <%= form_with(url: "/pending_orders", method: "post") do %>
+                    <%= form_with(url: "/clerks/pending_orders", method: "post") do %>
                     <input type="text" class="invisible" name="order_id" value="<%=order.id%>">
                     <%= submit_tag 'Deliver Order', class: 'btn btn-primary deliver-button' %>
                     <% end %>

@@ -1,4 +1,4 @@
-class EditusersController < ApplicationController
+class EditusersController < AdminController
   def index
     @admins = User.admins
     @clerks = User.clerks

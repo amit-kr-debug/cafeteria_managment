@@ -37,15 +37,6 @@
 <div class="bg-text" style="position:relative;
   top: 450px; text-align:left;">
 
-<h3 class="User-type-Title" > Admins <h3>
-<%= render partial: "userdata-section", locals:{users: @admins} %>
-
-<h3 class="User-type-Title" > Clerks <h3>
-<%= render partial: "userdata-section", locals:{users: @clerks} %>
-
-<h3 class="User-type-Title" > Customers <h3>
-<%= render partial: "userdata-section", locals:{users: @customers} %>
-
 <!--Add users-->
 <h3 class="User-type-Title" > Add Users <h3>
 
@@ -78,5 +69,14 @@
 
   <%= submit_tag 'Add User', class: 'btn btn-primary' %>
 <% end %>
+
+<h3 class="User-type-Title" style="margin-top:20px;" > Admins <h3>
+<%= render partial: "userdata-section", locals:{users: @admins} %>
+
+<h3 class="User-type-Title" > Clerks <h3>
+<%= render partial: "userdata-section", locals:{users: @clerks} %>
+
+<h3 class="User-type-Title" > Customers <h3>
+<%= render partial: "userdata-section", locals:{users: @customers} %>
 </div>
 </div>

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :ensure_user_logged_in
+
   def new
     render "signin"
   end
@@ -15,7 +17,7 @@ class SessionsController < ApplicationController
       elsif session[:user_type] == "admin"
         redirect_to dashboard_path
       elsif session[:user_type] == "clerk"
-        redirect_to clerks_path
+        redirect_to clerks_index_path
       end
     else
       flash[:error] = "Your login attempt was invalid. Please retry!"
@@ -24,9 +26,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session.each do |key, val|
-      session[:key] = nil
-    end
+    session[:current_user_id] = nil
+    @current_user = nil
     redirect_to "/"
   end
 end

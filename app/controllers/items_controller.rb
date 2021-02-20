@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class ItemsController < AdminController
   def index
     @menu = Menu.of_menu(params["menu_id"])
     if @menu.length > 0

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post "/records" => "admin#records_post", as: :display_records
   get "/records/invoice" => "admin#view_particular_order", as: :view_particular_order
 
-  get "/clerks" => "clerks#index", as: :clerks
+  get "/clerks" => "clerks#index", as: :clerks_index
   get "/clerks/pending_orders" => "clerks#pending_orders", as: :clerks_pending_orders
+  post "/clerks/pending_orders" => "clerks#deliver_order", as: :clerk_deliver_order
 end

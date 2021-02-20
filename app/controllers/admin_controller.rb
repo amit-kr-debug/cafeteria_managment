@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_action :ensure_user_is_admin
+
   def dashboard
     render "dashboard"
   end
@@ -13,11 +15,7 @@ class AdminController < ApplicationController
     order.delivered = true
     order.save
     flash[:success] = "Order delivered!"
-    if session[:user_type] == "admin"
-      redirect_to pending_orders_path
-    else
-      redirect_to clerks_pending_orders_path
-    end
+    redirect_to clerks_pending_orders_path
   end
 
   def records_get
@@ -35,5 +33,11 @@ class AdminController < ApplicationController
   def view_particular_order
     @order = Order.where(id: params[:order_id])
     render "invoice"
+  end
+
+  def ensure_user_is_admin
+    if current_user[:user_type] != "admin"
+      redirect_to "/"
+    end
   end
 end
