@@ -1,11 +1,43 @@
-<div class="order-type-sections">
-  <%= render partial: "receipt-section", locals:{ section_title: "Pending Orders",
-                                                  orders: @orders.pending,
-                                                  user: @user} %>
-</div>
+<nav class="navbar navbar-expand-lg navbar-inverse">
+<div class="container-fluid">
+  <a class="navbar-brand" href="/customers">Cafeteria</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div class="order-type-sections">
-  <%= render partial: "receipt-section", locals:{section_title: "Delivered Orders",
-                                                  orders: @orders.delivered,
-                                                  user: @user} %>
+  <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/customers">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav" style="float:right;">
+                <li class="nav-item">
+                    <a class="nav-link" href=<%=customer_cart_index_path%>>Cart</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href=<%=customer_orders_path%>>Orders</a>
+                </li>
+
+                <li class="nav-item">
+                    <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "nav-link"%>
+                </li>
+            </ul>
+        </div>
+  </div>
+</nav>
+
+<div class="div-main">
+  <div class="order-type-sections">
+    <%= render partial: "receipt-section", locals:{ section_title: "Pending Orders",
+                                                    orders: @orders.pending,
+                                                    user: @user} %>
+  </div>
+
+  <div class="order-type-sections">
+    <%= render partial: "receipt-section", locals:{section_title: "Delivered Orders",
+                                                    orders: @orders.delivered,
+                                                    user: @user} %>
+  </div>
 </div>

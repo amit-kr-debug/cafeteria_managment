@@ -1,14 +1,17 @@
 .NewUser-title{
   font-size: 30px;
+  color: aliceblue;
+
   margin-bottom: 40px;
 }
 .Form-section{
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .FormInput-label{
-color: #555555;
-padding: 8px;
+  color: aliceblue;
+  font-size: 18px;
+  padding: 8px;
 
 }
 
@@ -16,11 +19,12 @@ padding: 8px;
   font-size: 20px;
   padding:8px;
   border: 1px solid;
+  border-color: white;
   border-radius: 4px;
 }
 
 .Form-submit{
-  font-size: 14px;
+  font-size: 18px;
   color: white;
   background-color: #269956;
   border: 1px solid transparent;
@@ -30,7 +34,7 @@ padding: 8px;
 
 .Form-submit:hover {
   padding: 6px 22px;
-  font-size: 14px;
+  font-size: 18px;
   color: white;
   background-color: #30ad64;
   cursor: pointer;

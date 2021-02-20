@@ -1,3 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-inverse">
+<div class="container-fluid">
+  <a class="navbar-brand" href="/customers">Cafeteria</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%="/pending_orders"%>">Pending orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%="/records"%>">Records</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%="/editusers"%>">Users' control</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<%="/menus"%>">Menus</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav" style="float:right;">
+                <li class="nav-item">
+                    <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "nav-link"%>
+                </li>
+            </ul>
+        </div>
+  </div>
+</nav>
+
+<div class="div-main">
+<div class="bg-text" style="position:relative;
+  top: 130px; text-align:left;">
+
 <h3 class="menu-Title" > Menus <h3>
 <%= render partial: "menu-section", locals:{menus: @menus} %>
 
@@ -30,3 +69,5 @@
   </div>
   <%= submit_tag 'Add Menu', class: 'btn btn-primary' %>
 <% end %>
+</div>
+</div>

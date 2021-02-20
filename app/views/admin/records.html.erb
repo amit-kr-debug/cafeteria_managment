@@ -1,3 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-inverse">
+<div class="container-fluid">
+  <a class="navbar-brand" href="/customers">Cafeteria</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%="/pending_orders"%>">Pending orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%="/records"%>">Records</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<%="/editusers"%>">Users' control</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="<%="/menus"%>">Menus</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav" style="float:right;">
+                <li class="nav-item">
+                    <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "nav-link"%>
+                </li>
+            </ul>
+        </div>
+  </div>
+</nav>
+
+<div class="div-main">
+<div class="bg-text" style="text-align:left;">
 <h3 class="record-date-input-title">Select the date range to get records <h3>
 <div class="record-date-div">
   <%= form_with(url: "/records", method: "post") do %>
@@ -7,26 +44,28 @@
     <%= submit_tag 'Fetch', class: 'btn btn-primary' %>
   <%end%>
 </div>
+</div>
 
+<div class="container well">
 <%if @records != nil%>
 <table class="table table-striped menus-table">
   <thead>
     <tr>
-      <th scope="col">Date</th>
-      <th scope="col">Invoice</th>
-      <th scope="col">Name of customer</th>
-      <th scope="col">Total</th>
-      <th scope="col">View</th>
+      <th  scope="col">Date</th>
+      <th  scope="col">Invoice</th>
+      <th  scope="col">Name of customer</th>
+      <th  scope="col">Total</th>
+      <th  scope="col">View</th>
     </tr>
   </thead>
   <tbody>
   <% @records.each do |order| %>
     <tr>
-      <td><%= order.order_date %></td>
-      <td><%= order.id %></td>
-      <td><%=User.find(order.user_id).name%></td>
-      <td>₹<%= order.total %></td>
-      <td><%= form_with(url: "/records/invoice", method: "get") do %>
+      <td  ><%= order.order_date %></td>
+      <td ><%= order.id %></td>
+      <td ><%=User.find(order.user_id).name%></td>
+      <td >₹<%= order.total %></td>
+      <td ><%= form_with(url: "/records/invoice", method: "get") do %>
         <input class="invisible" name="order_id" value=<%=order.id%>>
         <%= image_submit_tag("/eye.png") %>
       <% end %></td>
@@ -35,3 +74,5 @@
   </tbody>
 </table>
 <%end%>
+</div>
+</div>

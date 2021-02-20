@@ -1,30 +1,36 @@
-<table class="table table-striped menus-table">
-  <thead>
-    <tr>
-      <th  class="menus-table-checkbox" scope="col">Active</th>
-      <!--th scope="col">Menu Id</th-->
-      <th scope="col">Name</th>
-      <th scope="col">Edit</th>
-      <th class="delete" scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% menus.each do |menu_id, menu|%>
-    <tr>
-      <td  class="menus-table-checkbox" >
-      <%= form_with(url: "/menus/#{menu_id}", method: "put") do %>
-            <%= check_box_tag 'active', nil, menu[0].active,
-                              onclick: "this.form.submit()"
-                              %>
+<div class="container">
+      <div class="row">
+          <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+  <table class="table table-striped menus-table">
+    <thead>
+      <tr>
+        <th  class="menus-table-checkbox" scope="col">Active</th>
+        <!--th scope="col">Menu Id</th-->
+        <th scope="col">Name</th>
+        <th scope="col">Edit</th>
+        <th class="delete" scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% menus.each do |menu_id, menu|%>
+      <tr>
+        <td  class="menus-table-checkbox" >
+        <%= form_with(url: "/menus/#{menu_id}", method: "put") do %>
+              <%= check_box_tag 'active', nil, menu[0].active,
+                                onclick: "this.form.submit()"
+                                %>
 
-          <%end%></td>
-      <!--td><%= menu_id %></td-->
-      <td><%= menu[0].menu_name %></td>
-      <td><a href= <%="/menus/#{menu_id}/items"%>><%= image_submit_tag("/pencil-outline.png") %></td>
-      <td><%= form_with(url: "/menus/#{menu_id}", method: "delete") do %>
-               <%= image_submit_tag("/delete.png") %>
-            <% end %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+            <%end%></td>
+        <!--td><%= menu_id %></td-->
+        <td><%= menu[0].menu_name %></td>
+        <td><a href= <%="/menus/#{menu_id}/items"%>><%= image_submit_tag("/pencil-outline.png") %></td>
+        <td><%= form_with(url: "/menus/#{menu_id}", method: "delete") do %>
+                <%= image_submit_tag("/delete.png") %>
+              <% end %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>

@@ -12,7 +12,12 @@ class AdminController < ApplicationController
     order = Order.find(params[:order_id])
     order.delivered = true
     order.save
-    redirect_to pending_orders_path
+    flash[:success] = "Order delivered!"
+    if session[:user_type] == "admin"
+      redirect_to pending_orders_path
+    else
+      redirect_to clerks_pending_orders_path
+    end
   end
 
   def records_get

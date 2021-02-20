@@ -1,3 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-inverse">
+<div class="container-fluid">
+  <a class="navbar-brand" href="/customers">Cafeteria</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pending_orders">Pending orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/records">Records</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/editusers">Users' control</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/menus">Menus</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav" style="float:right;">
+                <li class="nav-item">
+                    <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "nav-link"%>
+                </li>
+            </ul>
+        </div>
+  </div>
+</nav>
+
+
+<div class="div-main" style="max-width:860px">
+<div class="bg-text" style="text-align:left;">
 <section class="dashboard-tiles">
   <div class="card-deck-wrapper">
     <div class="card-deck">
@@ -11,7 +49,7 @@
       </div>
 
       <div class="card p-2  border-dark mb-3">
-        <a class="card-block stretched-link text-decoration-none" href>
+        <a class="card-block stretched-link text-decoration-none" href="/records">
             <h4 class="card-title">Records</h4>
               <p class="card-text"><small class="text-muted">> View previous orders</small></p>
         </a>
@@ -25,7 +63,7 @@
     <div class="card-deck">
 
       <div class="card p-2  border-dark mb-3">
-        <a class="card-block stretched-link text-decoration-none" href>
+        <a class="card-block stretched-link text-decoration-none" href="/pending_orders">
             <h4 class="card-title">Pending Orders</h4>
             <p class="card-text"><small class="text-muted">> Deliver the pending orders</small></p>
         </a>
@@ -43,3 +81,5 @@
 
   </div>
 </section>
+</div>
+</div>

@@ -1,20 +1,49 @@
-<p class="NewUser-title">Welcome new user!</p>
-<section class="UsersNew">
-<%= form_with url: users_path do |form| %>
-<div class= "Form-section">
-  <p class="FormInput-label"> Name: </p>
-  <%= form.text_field :name, class:"Form-input"%>
+<nav class="navbar navbar-expand-lg navbar-inverse">
+<div class="container-fluid">
+  <a class="navbar-brand" href="/">Cafeteria</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav" style="float:right;">
+                <li class="nav-item">
+                    <a class="nav-link" href="/signin">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Register</a>
+                </li>
+            </ul>
+        </div>
+  </div>
+</nav>
+
+<div class="div-main">
+  <div class="bg-text" style="position:relative; top:90px;">
+  <p class="NewUser-title">Welcome new user!</p>
+    <section class="UsersNew">
+      <%= form_with url: users_path do |form| %>
+        <div class= "Form-section">
+          <p class="FormInput-label"> Name: </p>
+          <%= form.text_field :name, class:"Form-input"%>
+        </div>
+        <div class= "Form-section">
+          <p class="FormInput-label"> Email: </p>
+          <%= form.email_field :email, class:"Form-input"%>
+        </div>
+        <div class= "Form-section">
+          <p class="FormInput-label"> Password: </p>
+          <%= form.password_field :password, class:"Form-input" %>
+        </div>
+        <div class="Form-section">
+        <%= form.submit "Sign-up!", class: "Form-submit"%>
+        </div>
+      <% end %>
+    </section>
+  </div>
 </div>
-<div class= "Form-section">
-  <p class="FormInput-label"> Email: </p>
-  <%= form.email_field :email, class:"Form-input"%>
-</div>
-<div class= "Form-section">
-  <p class="FormInput-label"> Password: </p>
-  <%= form.password_field :password, class:"Form-input" %>
-</div>
-<div class="Form-section">
-<%= form.submit "Sign-up!", class: "Form-submit"%>
-</div>
-<% end %>
-</section>

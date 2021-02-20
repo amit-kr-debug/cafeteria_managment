@@ -22,4 +22,11 @@ class SessionsController < ApplicationController
       redirect_to new_session_path
     end
   end
+
+  def destroy
+    session.each do |key, val|
+      session[:key] = nil
+    end
+    redirect_to "/"
+  end
 end

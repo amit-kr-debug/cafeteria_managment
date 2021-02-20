@@ -13,9 +13,32 @@
  *= require_tree .
  *= require_selfS
  */
-body {
+
+.background-img{
+  position: absolute;
+  left: 0px;
+  top: 60px;
+  background-image: url("kris-atomic-3b2tADGAWnU-unsplash.jpg");
+  z-index: -1;
+  /* Add the blur effect */
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+  /* Full height */
+  height: 100%;
+  width: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: cover;
+}
+
+.div-main{
   font-family: sans-serif;
+  position: relative;
   margin: 0 auto;
+  max-width: 860px;
+  background: transparent;
 }
 
 .Flash-error{
@@ -37,5 +60,7 @@ body {
 }
 
 .div-main{
-  max-width: 860px;
+
+  max-width: 1070px;
+  margin:0 auto;
 }

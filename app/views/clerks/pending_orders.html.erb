@@ -1,5 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-inverse">
+<div class="container-fluid">
+  <a class="navbar-brand" href="/clerks">Cafeteria</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clerks">Home</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav" style="float:right;">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clerks/pending_orders">Pending Orders</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/customers">Place Order</a>
+                </li>
+
+                <li class="nav-item">
+                    <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "nav-link"%>
+                </li>
+            </ul>
+        </div>
+  </div>
+</nav>
+<div class="div-main">
 <div class="order-type-sections">
   <%= render partial: "invoice-section", locals:{ section_title: "Pending Orders",
                                                   orders: @orders.pending}
                                                   %>
+</div>
 </div>

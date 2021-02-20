@@ -3,9 +3,15 @@
 }
 
 .place-order{
+  position: relative;
   float: right;
+  font-size: 18px;
 }
 
 .flex-conatiner{
   display: flex;
+}
+
+.white-text{
+  color: aliceblue;
 }
