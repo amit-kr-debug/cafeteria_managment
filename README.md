@@ -17,12 +17,12 @@ It has support of different user types
 
 
 #### `Functionalities available for an Admin`
-![Admin-dashboard](app/assets/images/github-readme/Admin dashboard.JPG)
+![Admin-dashboard](app/assets/images/github-readme/Admin-dashboard.JPG)
 * Add / Delete / Edit any Menu
 * Set an active menu
-![edit-menu](app/assets/images/github-readme/Edit menus.JPG)
+![edit-menu](app/assets/images/github-readme/Edit-menus.JPG)
 * View currently pending orders and deliver them
-![pending-orders](app/assets/images/github-readme/Pending Orders.JPG)
+![pending-orders](app/assets/images/github-readme/Pending-Orders-admin.JPG)
 * View sales records of desired time range
 ![records](app/assets/images/github-readme/Record.JPG)
 * Add / Remove any user(clerk, admin, customer)
@@ -37,11 +37,14 @@ It has support of different user types
 
 
 #### Credentials
-* Admin => email :=> admin@cafe.com
-           password :=> 123
+* Admin
+    * email :=> admin@cafe.com
+    * password :=> 123
 
-* clerk => email :=> clerk@cafe.com
-          password :=> 123
+* Clerk
+    * email :=> clerk@cafe.com
+    * password :=> 123
 
-* customer => email :=> customer@gmail.com
-              password :=> 123
+* Customer
+    * email :=> customer@gmail.com
+    * password :=> 123
