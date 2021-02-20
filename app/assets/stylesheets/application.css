@@ -21,8 +21,8 @@
   background-image: url("kris-atomic-3b2tADGAWnU-unsplash.jpg");
   z-index: -1;
   /* Add the blur effect */
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
 
   /* Full height */
   height: 100%;
