@@ -14,22 +14,20 @@
  *= require_selfS
  */
 
-.background-img{
+body{
   position: absolute;
-  left: 0px;
-  top: 60px;
-  background-image: url("kris-atomic-3b2tADGAWnU-unsplash.jpg");
+  background-image: url("bg.jpg");
   z-index: -1;
   /* Add the blur effect */
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
 
   /* Full height */
   height: 100%;
   width: 100%;
 
   /* Center and scale the image nicely */
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 
