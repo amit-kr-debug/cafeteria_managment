@@ -7,7 +7,12 @@ class EditusersController < AdminController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    user = User.find(params[:id])
+    if user.user_type == "customer"
+      orders = Order.of_user(user)
+      orders.each { |order| order.destroy }
+    end
+    user.destroy
     redirect_to editusers_path
   end
 
