@@ -7,6 +7,23 @@ It has support of different user types
 * Admin
 * Billing Clerk
 
+#### URL to the website
+[Amit's Cafeteria](https://amit-cafeteria.herokuapp.com/)
+
+#### Credentials
+* Admin
+    * email :=> admin@cafe.com
+    * password :=> 123
+
+* Clerk
+    * email :=> clerk@cafe.com
+    * password :=> 123
+
+* Customer
+    * email :=> customer@gmail.com
+    * password :=> 123
+
+
 #### `Functionalities available for a customer`
 * Add items to cart
 ![customers-menu](app/assets/images/github-readme/add-to-cart.JPG)
@@ -35,16 +52,5 @@ It has support of different user types
 * Can take walk-in orders
 * Can deliver any pending order
 
-
-#### Credentials
-* Admin
-    * email :=> admin@cafe.com
-    * password :=> 123
-
-* Clerk
-    * email :=> clerk@cafe.com
-    * password :=> 123
-
-* Customer
-    * email :=> customer@gmail.com
-    * password :=> 123
+#### URL to the website
+[Amit's Cafeteria](https://amit-cafeteria.herokuapp.com/)
