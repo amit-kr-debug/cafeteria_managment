@@ -13,6 +13,15 @@ class ItemsController < AdminController
     redirect_to menu_items_path
   end
 
+  def update
+    item = Menu.find(params[:id])
+    item.item_name = params["name"]
+    item.description = params["description"]
+    item.price = params["price"]
+    item.save
+    redirect_to menu_items_path
+  end
+
   def create
     menu_id = params["menu_id"]
     menu = Menu.of_menu(menu_id)[0]

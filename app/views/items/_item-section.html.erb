@@ -5,15 +5,19 @@
                   <th scope="col">Name</th>
                   <th scope="col">Description</th>
                   <th scope="col">Price</th>
+                  <th scope="col">Update</th>
                   <th scope="col">Remove</th>
                 </tr>
               </thead>
               <tbody>
               <% menu.each do |item| %>
                 <tr>
-                  <td><%= item.item_name%></td>
-                  <td><%= item.description %></td>
-                  <td><%= item.price %></td>
+                <%= form_with(url: "/menus/#{params[:menu_id]}/items/#{item.id}", method: "PUT") do %>
+                  <td><input type="text" class="form-control" name="name" value="<%= item.item_name%>"> </td>
+                  <td><input type="text" class="form-control" name="description" value="<%= item.description %>"> </td>
+                  <td><input type="text" class="form-control price" name="price" value="<%= item.price %>"> </td>
+                  <td> <%= submit_tag 'Update', class: 'btn btn-primary' %> </td>
+                  <%end%>
                   <td><%= form_with(url: "/menus/#{params[:menu_id]}/items/#{item.id}", method: "delete") do %>
                           <%= image_submit_tag("/delete.png") %>
                         <% end %></td>
