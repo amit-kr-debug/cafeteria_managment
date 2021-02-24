@@ -53,3 +53,10 @@ input:focus {
 .card-title{
   color: rgb(7, 5, 5);
 }
+
+.proceed-to-cart{
+  position: relative;
+  float: right;
+  top: 30px;
+  left: 10px;
+}

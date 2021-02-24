@@ -18,5 +18,6 @@ class CustomersController < ApplicationController
       end
     end
     user.save!
+    redirect_to customers_path
   end
 end

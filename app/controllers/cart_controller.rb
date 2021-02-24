@@ -72,7 +72,8 @@ class CartController < ApplicationController
       else
         redirect_to customer_orders_path
       end
+    else
+      redirect_to customers_path
     end
-    redirect_to customers_path
   end
 end
