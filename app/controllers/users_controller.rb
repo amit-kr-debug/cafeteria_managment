@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       email: email,
       password: password,
       user_type: "customer",
+      cart: {},
     )
     if user.save
       session[:current_user_id] = user.id
