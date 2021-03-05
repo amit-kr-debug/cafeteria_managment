@@ -16,12 +16,13 @@ class UsersController < ApplicationController
       user_type: "customer",
       cart: {},
     )
-    if user.save
+    begin
+      user.save!
       session[:current_user_id] = user.id
       redirect_to "/"
-    else
-      flash[:error] = user.errors.full_messages.join(", ")
-      redirect_to new_user_path
+    rescue
+      flash[:error] = "Email is already registered! Please signin"
+      redirect_to sign_up_path
     end
   end
 end
