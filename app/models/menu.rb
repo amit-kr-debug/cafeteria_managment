@@ -9,7 +9,7 @@ class Menu < ApplicationRecord
      #removig current active menu
      menu = self.where(active: true)
      menu.each { |item|
-       item.active = active
+       item.active = false
        item.save
      }
      #updating the active menu
