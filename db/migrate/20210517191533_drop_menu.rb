@@ -1,5 +1,5 @@
 class DropMenu < ActiveRecord::Migration[6.1]
   def change
-    drop_table :table_orders
+    drop_table :menus
   end
 end
