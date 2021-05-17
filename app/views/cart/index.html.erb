@@ -9,7 +9,7 @@
   <%cart_total = 0%>
   <%if @cart!= nil %>
   <% @cart.each do |item_id, quantity|%>
-      <%item = Menu.find(item_id)%>
+      <%item = Item.find(item_id)%>
       <% cart_total += item.price*quantity.to_i %>
   <% end %>
   <% end %>

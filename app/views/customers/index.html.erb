@@ -2,9 +2,8 @@
 
 <div class="div-main">
   <div class="bg-text" style="postion:absolute; top:180px; text-align:left;">
-      <h3 class="User-type-Title" > Menu: <%= @menu[0].menu_name%> <h3>
-      <%= render partial: "activeMenu-section", locals:{menu: @menu, user: @user} %>
-
+      <h3 class="User-type-Title" > Menu: <%= @menu.name%> <h3>
+      <%= render partial: "activeMenu-section", locals:{items: @items, user: @user} %>
   </div>
 <%= form_with(url: "/customers/#{session[:current_user_id]}/cart", method: "get") do %>
         <%= submit_tag 'Proceed to cart', class: 'btn btn-primary proceed-to-cart'%>

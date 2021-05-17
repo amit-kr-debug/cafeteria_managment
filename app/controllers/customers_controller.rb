@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
   def index
     @menu = Menu.active
+    @items = Item.active_menu_items
     @user = User.details(session[:current_user_id])
     render "index"
   end

@@ -4,12 +4,12 @@
 <div class="div-main">
 <div class="bg-text" style="position:absolute; top:150px; top:0 auto;
    text-align:left;">
-<h3 class="menu-Title" ><%= @menu[0].menu_name %><h3>
+<h3 class="menu-Title" ><%= @menu.name %><h3>
 
-<%= render partial: "item-section", locals:{menu: @menu} %>
+<%= render partial: "item-section", locals:{items: @items} %>
 
 <!-- Add Items -->
-<%= form_with(url: "/menus/#{params[:menu_id]}/items", method: "post") do %>
+<%= form_with(url: "/menus/#{@menu.id}/items", method: "post") do %>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label class="new-menu-title">Item Name</label>

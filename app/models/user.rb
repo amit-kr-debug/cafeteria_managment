@@ -21,7 +21,7 @@ class User < ApplicationRecord
     user = User.find(user_id)
     cart = user.cart
     cart.each do |item_id, quantity|
-      if Menu.exists?(id: item_id) == false || Menu.find(item_id).active == false
+      if Item.exists?(id: item_id) == false || Menu.find(Item.find(item_id).menu_id).active == false
         cart.delete(item_id)
       end
     end

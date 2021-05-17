@@ -10,15 +10,15 @@
                 </tr>
               </thead>
               <tbody>
-              <% menu.each do |item| %>
+              <% items.each do |item| %>
                 <tr>
-                <%= form_with(url: "/menus/#{params[:menu_id]}/items/#{item.id}", method: "PATCH") do %>
-                  <td><input type="text" class="form-control" name="name" value="<%= item.item_name%>"> </td>
+                <%= form_with(url: "/menus/#{@menu.id}/items/#{item.id}", method: "PATCH") do %>
+                  <td><input type="text" class="form-control" name="name" value="<%= item.name%>"> </td>
                   <td><input type="text" class="form-control" name="description" value="<%= item.description %>"> </td>
                   <td><input type="text" class="form-control price" name="price" value="<%= item.price %>"> </td>
                   <td> <%= submit_tag 'Update', class: 'btn btn-primary' %> </td>
                 <%end%>
-                  <td><%= form_with(url: "/menus/#{params[:menu_id]}/items/#{item.id}", method: "delete") do %>
+                  <td><%= form_with(url: "/menus/#{@menu.id}/items/#{item.id}", method: "delete") do %>
                           <%= image_submit_tag("/delete.png") %>
                         <% end %></td>
                 </tr>

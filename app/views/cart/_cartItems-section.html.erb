@@ -11,10 +11,11 @@
   <tbody>
   <%cart_total = 0%>
   <%if cart!=nil %>
+
   <% cart.each do |item_id, quantity| %>
-    <%item = Menu.find(item_id)%>
+    <%item = Item.find(item_id)%>
     <tr>
-      <td><%= item.item_name%></td>
+      <td><%= item.name%></td>
       <td id="<%= item.id.to_s+"price" %>"><%= item.price %></td>
       <td>
       <%= form_with(url: "/customers/#{session[:current_user_id]}/cart/#{item.id}", method: "put") do %>

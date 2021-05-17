@@ -35,9 +35,9 @@ class CartController < ApplicationController
       order_hStore = {}
       order_total = 0
       cart.each do |item_id, quantity|
-        item = Menu.find(item_id)
+        item = Item.find(item_id)
         order_total += item.price * quantity.to_i
-        order_hStore[item_id] = { "item_name" => item.item_name,
+        order_hStore[item_id] = { "item_name" => item.name,
                                   "quantity" => quantity,
                                   "price" => item.price,
                                   "sub_total" => item.price * quantity.to_i }
