@@ -1,0 +1,2 @@
+class Notable < ApplicationRecord
+end
