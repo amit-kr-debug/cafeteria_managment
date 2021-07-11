@@ -7,8 +7,8 @@ development:
   <<: *default
   host: localhost
   user: postgres
-  password: amit
-  database: cafe_db
+  password: changeme
+  database: amit_cafe_db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,9 +17,9 @@ test:
   <<: *default
   host: localhost
   user: postgres
-  password: amit
-  database: test_cafe_db
+  password: changeme
+  database: amit_test_cafe_db
 
 production:
   <<: *default
-  database: prod_cafe_db
+  database: amit_prod_cafe_db
