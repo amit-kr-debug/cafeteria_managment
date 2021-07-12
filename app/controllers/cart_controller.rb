@@ -48,13 +48,14 @@ class CartController < ApplicationController
                                   "price" => item.price,
                                   "sub_total" => item.price * quantity.to_i }
       end
-      is_dine_in=true
-      allocated_table = Allocation.allocate_table(user.id)
-      time = Allocation.getTimeof(allocated_table)
-      puts time
-      # if params[:order_type]=="dine_in"
-      #   is_dine_in=true
-      # end
+      is_dine_in = false
+      allocated_table = nil
+      time = nil
+      if params[:is_dine_in] == "true"
+        is_dine_in = true
+        allocated_table = Allocation.allocate_table(user.id)
+        time = Allocation.getTimeof(allocated_table)
+      end
       if session[:user_type] == "clerk"
         walk_in_customer = User.where(name: "Walk-in")[0]
         new_order = Order.new(
@@ -79,20 +80,26 @@ class CartController < ApplicationController
           time: time,
         )
       end
-      if allocated_table
-        new_order.save
-        user.cart = {}
-        user.save
-        session[:order_placed] = true
-      end
+
+      new_order.save
+      user.cart = {}
+      user.save
+      session[:order_placed] = true
+
 
 
 
       if session[:user_type] == "clerk"
         redirect_to clerks_pending_orders_path
-      elsif allocated_table
-
-        redirect_to customer_orders_path
+      elsif session[:order_placed]
+        session[:order_placed] = false
+        if is_dine_in
+          flash[:success] = "Order Placed! Your alloted table number is #{allocated_table}"
+          redirect_to customer_orders_path
+        else
+          flash[:success] = "Order placed"
+          redirect_to customer_orders_path
+        end
       else
         flash[:error]="Order not placed"
         redirect_to customers_path
