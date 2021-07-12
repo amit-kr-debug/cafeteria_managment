@@ -26,10 +26,15 @@ class Allocation < ApplicationRecord
       all_allocated.each do |temp|
         if temp.time < min
           allocated = temp
+          min = temp.time
         end
       end
       allocated.user_id=user_id
-      allocated.time=Time.now
+      if allocated.time < Time.now - 1800
+        allocated.time = Time.now
+      else
+        allocated.time = allocated.time+1800
+      end
       allocated.save
       return allocated.id
     end
@@ -43,4 +48,24 @@ class Allocation < ApplicationRecord
     end
   end
 
+  def self.getTimeof(allocation_id)
+    find(allocation_id).time
+  end
+
+  def self.next_available_time
+    total_tables=Notable.all[0].capacity
+    all_allocated=Allocation.all
+    if all_allocated.length >= total_tables
+      all_allocated=all_allocated.limit(total_tables)
+      min = all_allocated[0].time
+      allocated = all_allocated[0]
+      all_allocated.each do |temp|
+        if temp.time < min
+          allocated = temp
+          min = temp.time
+        end
+      end
+    end
+    return allocated.time
+  end
 end
