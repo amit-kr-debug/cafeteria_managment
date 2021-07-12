@@ -3,7 +3,9 @@
 <div class="div-main">
   <div class="bg-text"  style="text-align: left;">
   <div class="container well" style="margin-top: 2%; margin-right: 30px; margin-bottom: 2%;">
-
+  <%if @available_tables>0%><p style="color: red;"> Hurry! Only <%=@available_tables%> tables left </p>
+  <%else%> <p style="color: red;"> Next table will be ready by <%= (@next_available_time+19800).strftime("%I:%M %p") %>  </p>
+  <%end%>
   <%= render partial: "cartItems-section", locals:{cart: @cart} %>
 
   <%cart_total = 0%>
@@ -13,9 +15,18 @@
       <% cart_total += item.price*quantity.to_i %>
   <% end %>
   <% end %>
-  <h1 style="float:left; font-size:18px; color:black;"> Total: ₹ <%=cart_total%></h3>
+
+
+
+  <h1 style="float:left; font-size:18px; color:black; margin-right:60px;"> Total: ₹ <%=cart_total%></h3>
+
+
 
   <%= form_with(url: "/customers/#{session[:current_user_id]}/cart", method: "post") do %>
+  <input type="radio" name="is_dine_in" value="flase" >
+  <label for="home_delivery" style="font-size:18px; color:black;">Home delivery</label>
+  <input type="radio" name="is_dine_in" value="true" checked>
+  <label for="dine_in" style="font-size:18px; color:black;">Dine in</label>
     <%= submit_tag 'Place Order', class: 'btn btn-primary place-order'%>
   <%end%>
   </div>

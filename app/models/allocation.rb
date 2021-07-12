@@ -66,6 +66,6 @@ class Allocation < ApplicationRecord
         end
       end
     end
-    return allocated.time
+    return allocated.time+1800
   end
 end
