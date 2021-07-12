@@ -45,6 +45,8 @@ class CartController < ApplicationController
                                   "sub_total" => item.price * quantity.to_i }
       end
       is_dine_in=true
+      allocated_table = Allocation.allocate_table(user.id)
+
       # if params[:order_type]=="dine_in"
       #   is_dine_in=true
       # end
@@ -57,6 +59,7 @@ class CartController < ApplicationController
           delivered: false,
           total: order_total,
           is_dine_in: is_dine_in,
+          allocated_table: allocated_table,
         )
       else
         new_order = Order.new(
@@ -66,10 +69,10 @@ class CartController < ApplicationController
           delivered: false,
           total: order_total,
           is_dine_in: is_dine_in,
+          allocated_table: allocated_table,
         )
       end
-      is_allocated=Allocation.allocate_table(user.id)
-      if is_allocated
+      if allocated_table
         new_order.save
         user.cart = {}
         user.save
@@ -80,7 +83,7 @@ class CartController < ApplicationController
 
       if session[:user_type] == "clerk"
         redirect_to clerks_pending_orders_path
-      elsif is_allocated
+      elsif allocated_table
 
         redirect_to customer_orders_path
       else

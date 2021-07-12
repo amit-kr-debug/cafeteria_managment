@@ -17,33 +17,30 @@ class Allocation < ApplicationRecord
   end
 
   def self.allocate_table(user_id)
-    flag=false
     total_tables=Notable.all[0].capacity
     all_allocated=Allocation.all
-    if all_allocated.length > total_tables
+    if all_allocated.length >= total_tables
       all_allocated=all_allocated.limit(total_tables)
-    end
-    all_allocated.each do |allocated|
-      if allocated.time+1800 < Time.now
-        allocated.user_id=user_id
-        allocated.time=Time.now
-        flag=true
-        allocated.save
-        return true
+      min = all_allocated[0].time
+      allocated = all_allocated[0]
+      all_allocated.each do |temp|
+        if temp.time < min
+          allocated = temp
+        end
       end
+      allocated.user_id=user_id
+      allocated.time=Time.now
+      allocated.save
+      return allocated.id
     end
-
-    if flag==false
-      if all_allocated.length < total_tables
-        allocation=Allocation.new(
-          time: Time.now,
-          user_id: user_id,
-        )
-        allocation.save
-        return true
-      end
+    if all_allocated.length < total_tables
+      allocation=Allocation.new(
+        time: Time.now,
+        user_id: user_id,
+      )
+      allocation.save
+      return allocation.id
     end
-    return false
   end
 
 end

@@ -64,8 +64,6 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.7.5)
-      msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.35.3)
@@ -102,7 +100,6 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.3)
-    msgpack (1.4.2)
     nio4r (2.5.5)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
@@ -152,6 +149,7 @@ GEM
     regexp_parser (2.0.3)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
+      ffi (~> 1.9)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -206,7 +204,6 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-  bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
   jbuilder (~> 2.7)
@@ -215,7 +212,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.1)
-  sass-rails (>= 6)
+  sass-rails (>= 5.1.0)
   selenium-webdriver
   spring
   turbolinks (~> 5)

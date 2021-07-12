@@ -26,6 +26,7 @@ class EditusersController < AdminController
       email: email,
       password: password,
       user_type: user_type,
+      cart: {},
     )
     if user.save
       redirect_to editusers_path

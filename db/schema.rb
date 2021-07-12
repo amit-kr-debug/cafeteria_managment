@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_11_173422) do
+ActiveRecord::Schema.define(version: 2021_07_12_054939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_07_11_173422) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "total"
     t.boolean "is_dine_in"
+    t.integer "allocated_table"
   end
 
   create_table "users", force: :cascade do |t|
