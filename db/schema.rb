@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_192109) do
+ActiveRecord::Schema.define(version: 2021_07_11_173422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
+
+  create_table "allocations", force: :cascade do |t|
+    t.datetime "time"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -32,6 +39,12 @@ ActiveRecord::Schema.define(version: 2021_05_17_192109) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "notables", force: :cascade do |t|
+    t.integer "capacity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.hstore "order"
@@ -40,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_192109) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "total"
+    t.boolean "is_dine_in"
   end
 
   create_table "users", force: :cascade do |t|

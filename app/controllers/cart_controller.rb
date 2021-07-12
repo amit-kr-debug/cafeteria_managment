@@ -1,5 +1,7 @@
 class CartController < ApplicationController
   def index
+    @available_tables=Allocation.available_tables()
+    puts @available_tables
     @cart = User.cart(session[:current_user_id])
     render "index"
   end
@@ -42,7 +44,10 @@ class CartController < ApplicationController
                                   "price" => item.price,
                                   "sub_total" => item.price * quantity.to_i }
       end
-
+      is_dine_in=true
+      # if params[:order_type]=="dine_in"
+      #   is_dine_in=true
+      # end
       if session[:user_type] == "clerk"
         walk_in_customer = User.where(name: "Walk-in")[0]
         new_order = Order.new(
@@ -51,6 +56,7 @@ class CartController < ApplicationController
           order_date: Date.today,
           delivered: false,
           total: order_total,
+          is_dine_in: is_dine_in,
         )
       else
         new_order = Order.new(
@@ -59,18 +65,27 @@ class CartController < ApplicationController
           order_date: Date.today,
           delivered: false,
           total: order_total,
+          is_dine_in: is_dine_in,
         )
       end
-      new_order.save
+      is_allocated=Allocation.allocate_table(user.id)
+      if is_allocated
+        new_order.save
+        user.cart = {}
+        user.save
+        session[:order_placed] = true
+      end
 
-      user.cart = {}
-      user.save
 
-      session[:order_placed] = true
+
       if session[:user_type] == "clerk"
         redirect_to clerks_pending_orders_path
-      else
+      elsif is_allocated
+
         redirect_to customer_orders_path
+      else
+        flash[:error]="Order not placed"
+        redirect_to customers_path
       end
     else
       redirect_to customers_path
